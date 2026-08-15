@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ExileMC - Equipe</title>
+
+    <link rel="icon"
+          type="image/png"
+          href="../library/equipe/lib-core/themes/server/server-icon.png"
+          sizes="64x64">
+
+    <link rel="stylesheet"
+          href="../library/equipe/lib-npm/bootstrap_5.0.2/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet"
+          href="../library/equipe/lib-boxicons_2.0.7/css/boxicons.min.css">
+
+    <link rel="stylesheet"
+          href="../library/equipe/lib-core/themes/website/assets/css/styles.css">
+
+    <style>
+
+        /* =========================================================
+           EXILEMC - EQUIPE
+           Identidade visual
+        ========================================================= */
+
+        :root {
+            --bg: #151218;
+            --bg-secondary: #1b1820;
+            --card: #242127;
+            --card-hover: #2b2730;
+
+            --border: #39333f;
+            --border-light: #514957;
+
+            --text: #f2f0f4;
+            --text-muted: #a9a1ad;
+
+            --purple: #d97fec;
+            --purple-dark: #9d58ad;
+
+            --red: #c20000;
+            --red-light: #ff3d3d;
+
+            --pink: #ff0056;
+            --blue: #0f54e1;
+
+            --shadow: 0 15px 45px rgba(0, 0, 0, .35);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background:
+                    radial-gradient(circle at 10% 0%, rgba(217, 127, 236, .08), transparent 30%),
+                    radial-gradient(circle at 90% 10%, rgba(194, 0, 0, .07), transparent 30%),
+                    var(--bg);
+
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* =========================================================
+           NAVBAR
+        ========================================================= */
+
+        .menu {
+            background: rgba(27, 24, 32, .92) !important;
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .navbar-brand img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            transition: .3s ease;
+        }
+
+        .navbar-brand img:hover {
+            transform: scale(1.08);
+        }
+
+        .navbar-nav {
+            gap: 8px;
+        }
+
+        .nav-link {
+            color: #aaa3af !important;
+            font-weight: 600;
+            padding: 10px 16px !important;
+            border-radius: 9px;
+            transition: .25s ease;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            color: #fff !important;
+            background: rgba(217, 127, 236, .08);
+        }
+
+        .nav-link.active {
+            color: #fff !important;
+            background: linear-gradient(
+                    135deg,
+                    rgba(217, 127, 236, .18),
+                    rgba(194, 0, 0, .10)
+            );
+            box-shadow: inset 0 0 0 1px rgba(217, 127, 236, .15);
+        }
+
+        .navbar-toggler {
+            border: 1px solid var(--border-light);
+            color: #fff;
+            padding: 8px 12px;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 3px rgba(217, 127, 236, .12);
+        }
+
+        /* =========================================================
+           CONTAINER
+        ========================================================= */
+
+        .staffs {
+            padding: 45px 0 70px;
+        }
+
+        /* =========================================================
+           BANNER
+        ========================================================= */
+
+        .banner {
+            position: relative;
+            overflow: hidden;
+
+            min-height: 260px;
+
+            display: flex;
+            align-items: center;
+
+            margin-bottom: 50px;
+
+            border: 1px solid var(--border);
+            border-radius: 18px;
+
+            background:
+                    linear-gradient(
+                            110deg,
+                            rgba(217, 127, 236, .14),
+                            rgba(194, 0, 0, .08),
+                            rgba(36, 33, 39, .95)
+                    );
+
+            box-shadow: var(--shadow);
+        }
+
+        .banner::before {
+            content: "";
+            position: absolute;
+
+            width: 320px;
+            height: 320px;
+
+            right: -120px;
+            top: -140px;
+
+            background: rgba(217, 127, 236, .12);
+
+            border-radius: 50%;
+            filter: blur(5px);
+        }
+
+        .banner::after {
+            content: "";
+            position: absolute;
+
+            width: 200px;
+            height: 200px;
+
+            right: 180px;
+            bottom: -150px;
+
+            background: rgba(194, 0, 0, .12);
+
+            border-radius: 50%;
+            filter: blur(25px);
+        }
+
+        .banner .body {
+            position: relative;
+            z-index: 2;
+
+            padding: 45px;
+            max-width: 700px;
+        }
+
+        .banner h3 {
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 800;
+            margin-bottom: 12px;
+
+            background: linear-gradient(
+                    90deg,
+                    #fff,
+                    var(--purple)
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .banner p {
+            color: var(--text-muted);
+            font-size: 17px;
+            margin-bottom: 25px;
+        }
+
+        .banner button {
+            border: none;
+            border-radius: 9px;
+
+            padding: 12px 22px;
+
+            color: #fff;
+            font-weight: 700;
+
+            background: linear-gradient(
+                    135deg,
+                    var(--purple-dark),
+                    #743582
+            );
+
+            box-shadow: 0 8px 25px rgba(157, 88, 173, .25);
+
+            transition: .25s ease;
+        }
+
+        .banner button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(157, 88, 173, .35);
+        }
+
+        /* =========================================================
+           SECTION
+        ========================================================= */
+
+        .members {
+            margin-bottom: 55px;
+        }
+
+        .members > h3 {
+            position: relative;
+
+            display: inline-block;
+
+            font-size: 25px;
+            font-weight: 800;
+
+            margin-bottom: 8px;
+        }
+
+        .members > h3::after {
+            content: "";
+
+            display: block;
+
+            width: 45%;
+            height: 3px;
+
+            margin-top: 8px;
+
+            border-radius: 10px;
+
+            background: linear-gradient(
+                    90deg,
+                    var(--purple),
+                    transparent
+            );
+        }
+
+        .group {
+            margin-top: 20px;
+
+            padding: 25px;
+
+            background: rgba(36, 33, 39, .72);
+
+            border: 1px solid var(--border);
+            border-radius: 15px;
+
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .15);
+        }
+
+        .group-description {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        /* =========================================================
+           MEMBER CARDS
+        ========================================================= */
+
+        .member-card {
+            height: 100%;
+
+            padding: 25px 15px 20px;
+
+            text-align: center;
+
+            background:
+                    linear-gradient(
+                            145deg,
+                            rgba(43, 39, 48, .95),
+                            rgba(30, 27, 34, .95)
+                    );
+
+            border: 1px solid var(--border);
+
+            border-radius: 14px;
+
+            transition:
+                    transform .25s ease,
+                    border-color .25s ease,
+                    box-shadow .25s ease;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .member-card::before {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            top: 0;
+
+            width: 100%;
+            height: 2px;
+
+            background: var(--member-color, var(--purple));
+
+            opacity: .7;
+        }
+
+        .member-card:hover {
+            transform: translateY(-7px);
+
+            border-color: var(--member-color, var(--purple));
+
+            box-shadow:
+                    0 15px 35px rgba(0, 0, 0, .35),
+                    0 0 25px rgba(217, 127, 236, .06);
+        }
+
+        .member-avatar {
+            width: 90px;
+            height: 90px;
+
+            margin: 0 auto 15px;
+
+            padding: 4px;
+
+            border-radius: 12px;
+
+            background:
+                    linear-gradient(
+                            135deg,
+                            var(--member-color, var(--purple)),
+                            transparent
+                    );
+
+            box-shadow: 0 7px 20px rgba(0, 0, 0, .35);
+        }
+
+        .member-avatar img {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            border-radius: 9px;
+
+            image-rendering: pixelated;
+            background: #17151a;
+        }
+
+        .member-name {
+            margin: 0;
+
+            font-size: 16px;
+            font-weight: 800;
+
+            color: var(--member-color, var(--purple));
+        }
+
+        .member-role {
+            margin-top: 5px;
+            margin-bottom: 0;
+
+            color: var(--text-muted);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 7px;
+        }
+
+        /* =========================================================
+           RESPONSIVIDADE
+        ========================================================= */
+
+        @media (max-width: 768px) {
+
+            .staffs {
+                padding: 25px 0 50px;
+            }
+
+            .banner {
+                min-height: 230px;
+                margin-bottom: 35px;
+            }
+
+            .banner .body {
+                padding: 30px;
+            }
+
+            .banner h3 {
+                font-size: 30px;
+            }
+
+            .group {
+                padding: 18px;
+            }
+
+            .navbar-nav {
+                padding: 15px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+
+            .banner .body {
+                padding: 25px;
+            }
+
+            .banner p {
+                font-size: 15px;
+            }
+
+            .members > h3 {
+                font-size: 22px;
+            }
+
+            .member-card {
+                padding: 20px 10px;
+            }
+
+            .member-avatar {
+                width: 75px;
+                height: 75px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<nav class="navbar navbar-expand-lg menu">
+
+    <div class="container">
+
+        <a class="navbar-brand" href="../">
+            <img
+                    src="../library/equipe/lib-core/themes/server/server-icon.png"
+                    alt="ExileMC">
+        </a>
+
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Abrir menu">
+
+            <i class="bx bx-menu"></i>
+
+        </button>
+
+        <div
+                class="collapse navbar-collapse"
+                id="navbarSupportedContent">
+
+            <ul class="navbar-nav m-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../">
+                        🚀 Início
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../regras/">
+                        📖 Regras
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="../equipe/">
+                        👮🏼 Equipe
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../loja/">
+                        🛒 Loja
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================================================
+     CONTEÚDO
+========================================================= -->
+
+<div class="container">
+
+    <main class="staffs">
+
+
+        <!-- =====================================================
+             BANNER
+        ====================================================== -->
+
+        <section class="banner">
+
+            <div class="body">
+
+                <h3>
+                    Nossa equipe
+                </h3>
+
+                <p>
+                    Conheça as pessoas que trabalham diariamente
+                    para manter o ExileMC cada vez melhor.
+                </p>
+
+                <button
+                        onclick="window.open(
+                        'https://discord.gg/7HGa8jJqNe',
+                        '_blank'
+                    )">
+
+                    💜 Faça parte da equipe
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             GESTORES
+        ====================================================== -->
+
+        <section class="members">
+
+            <h3>
+                Gestores
+            </h3>
+
+            <div class="group">
+
+                <p
+                        class="group-description"
+                        style="color:#ff3d3d;">
+
+                    Responsáveis pela administração e gerenciamento
+                    do servidor.
+
+                </p>
+
+                <div class="row g-3">
+
+
+                    <!-- YREINALDY -->
+
+                    <div class="col-6 col-md-4 col-lg-3">
+
+                        <div
+                                class="member-card"
+                                style="--member-color:#d97fec;">
+
+                            <div class="member-avatar">
+
+                                <img
+                                        src="https://mineskin.eu/avatar/yReinaldy_/100"
+                                        alt="yReinaldy_">
+
+                            </div>
+
+                            <p class="member-name">
+                                yReinaldy_
+                            </p>
+
+                            <p class="member-role">
+                                Desenvolvedor
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ??? -->
+
+                    <div class="col-6 col-md-4 col-lg-3">
+
+                        <div
+                                class="member-card"
+                                style="--member-color:#c20000;">
+
+                            <div class="member-avatar">
+
+                                <img
+                                        src="https://mineskin.eu/avatar/Steve/100"
+                                        alt="Administrador">
+
+                            </div>
+
+                            <p class="member-name">
+                                ???
+                            </p>
+
+                            <p class="member-role">
+                                Administrador
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-6 col-md-4 col-lg-3">
+
+                        <div
+                                class="member-card"
+                                style="--member-color:#c20000;">
+
+                            <div class="member-avatar">
+
+                                <img
+                                        src="https://mineskin.eu/avatar/Steve/100"
+                                        alt="Administrador">
+
+                            </div>
+
+                            <p class="member-name">
+                                ???
+                            </p>
+
+                            <p class="member-role">
+                                Administrador
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-6 col-md-4 col-lg-3">
+
+                        <div
+                                class="member-card"
+                                style="--member-color:#c20000;">
+
+                            <div class="member-avatar">
+
+                                <img
+                                        src="https://mineskin.eu/avatar/Steve/100"
+                                        alt="Administrador">
+
+                            </div>
+
+                            <p class="member-name">
+                                ???
+                            </p>
+
+                            <p class="member-role">
+                                Administrador
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             MODERADORES
+        ====================================================== -->
+
+        <section class="members">
+
+            <h3>
+                Moderadores
+            </h3>
+
+            <div class="group">
+
+                <p
+                        class="group-description"
+                        style="color:#ff0056;">
+
+                    Responsáveis por auxiliar os jogadores,
+                    organizar eventos e manter a ordem no servidor.
+
+                </p>
+
+                <div class="row g-3">
+
+
+                    <div class="col-6 col-md-4 col-lg-3">
+
+                        <div
+                                class="member-card"
+                                style="--member-color:#0f54e1;">
+
+                            <div class="member-avatar">
+
+                                <img
+                                        src="https://mineskin.eu/avatar/Steve/100"
+                                        alt="Moderador">
+
+                            </div>
+
+                            <p class="member-name">
+                                ???
+                            </p>
+
+                            <p class="member-role">
+                                Moderador
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-6 col-md-4 col-lg-3">
+
+                        <div
+                                class="member-card"
+                                style="--member-color:#0f54e1;">
+
+                            <div class="member-avatar">
+
+                                <img
+                                        src="https://mineskin.eu/avatar/Steve/100"
+                                        alt="Moderador">
+
+                            </div>
+
+                            <p class="member-name">
+                                ???
+                            </p>
+
+                            <p class="member-role">
+                                Moderador
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-6 col-md-4 col-lg-3">
+
+                        <div
+                                class="member-card"
+                                style="--member-color:#0f54e1;">
+
+                            <div class="member-avatar">
+
+                                <img
+                                        src="https://mineskin.eu/avatar/Steve/100"
+                                        alt="Moderador">
+
+                            </div>
+
+                            <p class="member-name">
+                                ???
+                            </p>
+
+                            <p class="member-role">
+                                Moderador
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-6 col-md-4 col-lg-3">
+
+                        <div
+                                class="member-card"
+                                style="--member-color:#0f54e1;">
+
+                            <div class="member-avatar">
+
+                                <img
+                                        src="https://mineskin.eu/avatar/Steve/100"
+                                        alt="Moderador">
+
+                            </div>
+
+                            <p class="member-name">
+                                ???
+                            </p>
+
+                            <p class="member-role">
+                                Moderador
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             MODERADORES EM TESTE
+        ====================================================== -->
+
+        <section class="members">
+
+            <h3>
+                Moderadores em Teste
+            </h3>
+
+            <div class="group">
+
+                <p
+                        class="group-description"
+                        style="color:#a10052;">
+
+                    Membros que estão passando pelo período
+                    de avaliação da equipe.
+
+                </p>
+
+                <div class="row g-3">
+
+
+                    <div class="col-6 col-md-4 col-lg-3">
+
+                        <div
+                                class="member-card"
+                                style="--member-color:#a10052;">
+
+                            <div class="member-avatar">
+
+                                <img
+                                        src="https://mineskin.eu/avatar/Steve/100"
+                                        alt="Moderador em teste">
+
+                            </div>
+
+                            <p class="member-name">
+                                ???
+                            </p>
+
+                            <p class="member-role">
+                                Em teste
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<!-- =========================================================
+     SCRIPTS
+========================================================= -->
+
+<script src="../library/equipe/jquery-3.6.0.min.js"></script>
+
+<script src="../library/equipe/lib-npm/_popperjs/core_2.9.2/dist/umd/popper.min.js"></script>
+
+<script src="../library/equipe/lib-npm/bootstrap_5.0.2/dist/js/bootstrap.min.js"></script>
+
+<script src="../library/equipe/lib-ajax/libs/toastr_js/2.0.1/js/toastr.html"></script>
+
+<script src="../library/equipe/lib-ajax/libs/clipboard_js/2.0.6/clipboard.min.html"></script>
+
+<script src="../library/equipe/lib-core/themes/website/assets/js/javascript.js"></script>
+
+<script src="../library/equipe/lib-core/themes/website/assets/js/sweetalert/sweetalert.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,1808 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="ExileMC - Regras e políticas do servidor.">
+
+    <meta name="theme-color"
+          content="#d97fec">
+
+    <title>ExileMC - Regras</title>
+
+
+    <!-- Favicon -->
+
+    <link
+            rel="icon"
+            type="image/png"
+            href="../library/regras/lib-core/themes/server/server-icon.png"
+            sizes="64x64"
+    >
+
+
+    <!-- Bootstrap -->
+
+    <link
+            rel="stylesheet"
+            href="../library/regras/lib-npm/bootstrap_5.0.2/dist/css/bootstrap.min.css"
+    >
+
+
+    <!-- Boxicons -->
+
+    <link
+            rel="stylesheet"
+            href="../library/regras/lib-boxicons_2.0.7/css/boxicons.min.css"
+    >
+
+
+    <!-- CSS original -->
+
+    <link
+            rel="stylesheet"
+            href="../library/regras/lib-core/themes/website/assets/css/styles.css"
+    >
+
+
+    <style>
+
+        /* =========================================================
+           EXILEMC - REGRAS
+        ========================================================= */
+
+        :root {
+
+            --purple: #d97fec;
+            --purple-dark: #a10052;
+
+            --red: #C20000;
+            --pink: #ff0056;
+            --blue: #0f54e1;
+
+            --bg: #0e0d11;
+            --card: #17151b;
+            --card-light: #211e25;
+
+            --border: rgba(255,255,255,.07);
+
+            --text: #f5f2f7;
+            --muted: #918b96;
+
+        }
+
+
+        body {
+
+            background:
+                    radial-gradient(
+                            circle at 50% -10%,
+                            rgba(217,127,236,.08),
+                            transparent 35%
+                    ),
+                    var(--bg);
+
+            color: var(--text);
+
+        }
+
+
+        /* =========================================================
+           NAVBAR
+        ========================================================= */
+
+        .menu {
+
+            position: relative;
+
+            z-index: 50;
+
+        }
+
+
+        .menu .nav-link {
+
+            cursor: pointer;
+
+            transition: .2s;
+
+        }
+
+
+        .menu .nav-link:hover {
+
+            color: var(--purple) !important;
+
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .rules-hero {
+
+            position: relative;
+
+            overflow: hidden;
+
+            margin-top: 30px;
+
+            padding: 55px 25px;
+
+            border-radius: 12px;
+
+            text-align: center;
+
+            border:
+                    1px solid rgba(217,127,236,.14);
+
+            background:
+
+                    radial-gradient(
+                            circle at 50% 0,
+                            rgba(217,127,236,.14),
+                            transparent 55%
+                    ),
+
+                    linear-gradient(
+                            135deg,
+                            rgba(217,127,236,.04),
+                            rgba(161,0,82,.04)
+                    );
+
+        }
+
+
+        .rules-hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 350px;
+            height: 350px;
+
+            top: -200px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            border-radius: 50%;
+
+            background:
+                    rgba(217,127,236,.08);
+
+            filter: blur(80px);
+
+        }
+
+
+        .rules-hero-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 700px;
+
+            margin: auto;
+
+        }
+
+
+        .rules-icon {
+
+            width: 65px;
+            height: 65px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            margin: 0 auto 18px;
+
+            border-radius: 14px;
+
+            background:
+                    rgba(217,127,236,.08);
+
+            border:
+                    1px solid rgba(217,127,236,.15);
+
+            color: var(--purple);
+
+            font-size: 30px;
+
+        }
+
+
+        .rules-hero h1 {
+
+            font-size: clamp(30px, 5vw, 48px);
+
+            font-weight: 800;
+
+            margin: 0;
+
+        }
+
+
+        .rules-hero h1 span {
+
+            color: var(--purple);
+
+        }
+
+
+        .rules-hero p {
+
+            margin: 12px 0 0;
+
+            color: var(--muted);
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =========================================================
+           ALERTA
+        ========================================================= */
+
+        .rules-alert {
+
+            margin-top: 20px;
+
+            padding: 17px 20px;
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 13px;
+
+            border-radius: 8px;
+
+            background:
+                    rgba(217,127,236,.045);
+
+            border:
+                    1px solid rgba(217,127,236,.12);
+
+        }
+
+
+        .rules-alert i {
+
+            color: var(--purple);
+
+            font-size: 22px;
+
+            margin-top: 1px;
+
+        }
+
+
+        .rules-alert strong {
+
+            display: block;
+
+            margin-bottom: 3px;
+
+        }
+
+
+        .rules-alert p {
+
+            margin: 0;
+
+            color: var(--muted);
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* =========================================================
+           BARRA DE PESQUISA
+        ========================================================= */
+
+        .rules-tools {
+
+            margin-top: 30px;
+
+            display: flex;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .search-box {
+
+            position: relative;
+
+            flex: 1;
+
+            min-width: 220px;
+
+        }
+
+
+        .search-box i {
+
+            position: absolute;
+
+            left: 14px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: var(--muted);
+
+        }
+
+
+        .search-box input {
+
+            width: 100%;
+
+            padding: 12px 15px 12px 42px;
+
+            background:
+                    rgba(255,255,255,.035);
+
+            border:
+                    1px solid var(--border);
+
+            border-radius: 7px;
+
+            color: #fff;
+
+            outline: none;
+
+            transition: .2s;
+
+        }
+
+
+        .search-box input:focus {
+
+            border-color:
+                    rgba(217,127,236,.35);
+
+            box-shadow:
+                    0 0 0 3px rgba(217,127,236,.05);
+
+        }
+
+
+        .search-box input::placeholder {
+
+            color: #68626d;
+
+        }
+
+
+        /* =========================================================
+           CONTADOR
+        ========================================================= */
+
+        .rules-counter {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 0 18px;
+
+            min-height: 45px;
+
+            background:
+                    rgba(255,255,255,.035);
+
+            border:
+                    1px solid var(--border);
+
+            border-radius: 7px;
+
+            color: var(--muted);
+
+            font-size: 13px;
+
+            white-space: nowrap;
+
+        }
+
+
+        .rules-counter strong {
+
+            color: var(--purple);
+
+            margin-right: 5px;
+
+        }
+
+
+        /* =========================================================
+           CATEGORIA
+        ========================================================= */
+
+        .rules-section {
+
+            margin-top: 35px;
+
+        }
+
+
+        .rules-section-header {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .section-icon {
+
+            width: 42px;
+            height: 42px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 8px;
+
+            background:
+                    rgba(217,127,236,.08);
+
+            color: var(--purple);
+
+            font-size: 20px;
+
+        }
+
+
+        .rules-section-header h2 {
+
+            margin: 0;
+
+            font-size: 20px;
+
+            font-weight: 700;
+
+        }
+
+
+        .rules-section-header p {
+
+            margin: 3px 0 0;
+
+            color: var(--muted);
+
+            font-size: 12px;
+
+        }
+
+
+        /* =========================================================
+           CARD DE REGRA
+        ========================================================= */
+
+        .rule {
+
+            position: relative;
+
+            display: flex;
+
+            gap: 15px;
+
+            padding: 19px;
+
+            margin-bottom: 10px;
+
+            background:
+                    rgba(255,255,255,.025);
+
+            border:
+                    1px solid var(--border);
+
+            border-radius: 8px;
+
+            transition: .2s;
+
+        }
+
+
+        .rule:hover {
+
+            transform: translateX(3px);
+
+            border-color:
+                    rgba(217,127,236,.18);
+
+            background:
+                    rgba(217,127,236,.025);
+
+        }
+
+
+        .rule-number {
+
+            width: 38px;
+            height: 38px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 7px;
+
+            background:
+                    rgba(217,127,236,.07);
+
+            border:
+                    1px solid rgba(217,127,236,.1);
+
+            color: var(--purple);
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+        }
+
+
+        .rule-content {
+
+            flex: 1;
+
+        }
+
+
+        .rule-title {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            flex-wrap: wrap;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .rule-title h3 {
+
+            margin: 0;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+        }
+
+
+        .rule-description {
+
+            margin: 0;
+
+            color: #918b96;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =========================================================
+           TAGS
+        ========================================================= */
+
+        .rule-tag {
+
+            display: inline-block;
+
+            padding: 3px 7px;
+
+            border-radius: 4px;
+
+            font-size: 9px;
+
+            text-transform: uppercase;
+
+            font-weight: 800;
+
+            letter-spacing: 4px;
+
+        }
+
+
+        .tag-important {
+
+            color: #ff7777;
+
+            background:
+                    rgba(194,0,0,.08);
+
+            border:
+                    1px solid rgba(194,0,0,.12);
+
+        }
+
+
+        .tag-security {
+
+            color: #d97fec;
+
+            background:
+                    rgba(217,127,236,.07);
+
+            border:
+                    1px solid rgba(217,127,236,.12);
+
+        }
+
+
+        .tag-community {
+
+            color: #5e91f0;
+
+            background:
+                    rgba(15,84,225,.08);
+
+            border:
+                    1px solid rgba(15,84,225,.12);
+
+        }
+
+
+        .tag-conduct {
+
+            color: #ff709d;
+
+            background:
+                    rgba(255,0,86,.07);
+
+            border:
+                    1px solid rgba(255,0,86,.11);
+
+        }
+
+
+        /* =========================================================
+           AVISO FINAL
+        ========================================================= */
+
+        .rules-footer-card {
+
+            margin-top: 35px;
+
+            margin-bottom: 45px;
+
+            padding: 28px;
+
+            text-align: center;
+
+            border-radius: 9px;
+
+            border:
+                    1px solid rgba(217,127,236,.13);
+
+            background:
+
+                    linear-gradient(
+                            135deg,
+                            rgba(217,127,236,.06),
+                            rgba(161,0,82,.04)
+                    );
+
+        }
+
+
+        .rules-footer-card i {
+
+            display: block;
+
+            color: var(--purple);
+
+            font-size: 30px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .rules-footer-card h3 {
+
+            font-size: 19px;
+
+            font-weight: 700;
+
+        }
+
+
+        .rules-footer-card p {
+
+            max-width: 600px;
+
+            margin: 8px auto 20px;
+
+            color: var(--muted);
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+        }
+
+
+        .discord-button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding: 10px 18px;
+
+            background: var(--purple);
+
+            color: #fff;
+
+            text-decoration: none;
+
+            border-radius: 6px;
+
+            font-weight: 600;
+
+            font-size: 13px;
+
+            transition: .2s;
+
+        }
+
+
+        .discord-button:hover {
+
+            color: #fff;
+
+            background: #c86ddd;
+
+            transform: translateY(-2px);
+
+        }
+
+
+        /* =========================================================
+           ESTADO VAZIO
+        ========================================================= */
+
+        .no-results {
+
+            display: none;
+
+            padding: 35px 20px;
+
+            text-align: center;
+
+            background:
+                    rgba(255,255,255,.025);
+
+            border:
+                    1px solid var(--border);
+
+            border-radius: 8px;
+
+            color: var(--muted);
+
+        }
+
+
+        .no-results i {
+
+            display: block;
+
+            font-size: 30px;
+
+            color: var(--purple);
+
+            margin-bottom: 10px;
+
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        .footer {
+
+            padding: 30px 0;
+
+            border-top:
+                    1px solid var(--border);
+
+            color: #69636d;
+
+            font-size: 12px;
+
+            text-align: center;
+
+        }
+
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media(max-width: 768px) {
+
+            .rules-hero {
+
+                margin-top: 20px;
+
+                padding: 40px 20px;
+
+            }
+
+
+            .rules-tools {
+
+                flex-direction: column;
+
+            }
+
+
+            .rules-counter {
+
+                min-height: 42px;
+
+            }
+
+
+            .rule {
+
+                padding: 15px;
+
+            }
+
+
+            .rule-number {
+
+                width: 34px;
+                height: 34px;
+
+            }
+
+
+            .rule:hover {
+
+                transform: none;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<nav class="navbar navbar-expand-lg menu">
+
+    <div class="container">
+
+
+        <a
+                class="navbar-brand"
+                href="../"
+        >
+
+            <img
+                    src="../library/regras/lib-core/themes/server/server-icon.png"
+                    alt="ExileMC"
+            >
+
+        </a>
+
+
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Alternar navegação"
+        >
+
+            <i class="bx bx-menu"></i>
+
+        </button>
+
+
+        <div
+                class="collapse navbar-collapse"
+                id="navbarSupportedContent"
+        >
+
+            <ul class="navbar-nav m-auto">
+
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="../"
+                    >
+
+                        🚀 Início
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link active"
+                            href="../regras/"
+                    >
+
+                        📖 Regras
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="../equipe/"
+                    >
+
+                        👮🏼 Equipe
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                            class="nav-link"
+                            href="../loja/"
+                    >
+
+                        🛒 Loja
+
+                    </a>
+
+                </li>
+
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================================================
+     CONTEÚDO
+========================================================= -->
+
+<div class="container">
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="rules-hero">
+
+        <div class="rules-hero-content">
+
+
+            <div class="rules-icon">
+
+                <i class="bx bx-book-open"></i>
+
+            </div>
+
+
+            <h1>
+
+                Regras do <span>ExileMC</span>
+
+            </h1>
+
+
+            <p>
+
+                Para manter nossa comunidade segura, divertida e
+                organizada, todos os jogadores devem conhecer e
+                respeitar as regras do servidor.
+
+            </p>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ALERTA
+    ====================================================== -->
+
+    <div class="rules-alert">
+
+        <i class="bx bx-info-circle"></i>
+
+
+        <div>
+
+            <strong>
+                Leia antes de jogar
+            </strong>
+
+            <p>
+
+                Ao jogar no ExileMC, você concorda em seguir todas
+                as regras abaixo. A equipe poderá aplicar punições
+                conforme a gravidade da infração.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         PESQUISA
+    ====================================================== -->
+
+    <div class="rules-tools">
+
+
+        <div class="search-box">
+
+            <i class="bx bx-search"></i>
+
+            <label for="ruleSearch"></label><input
+                    type="text"
+                    id="ruleSearch"
+                    placeholder="Pesquisar uma regra..."
+                    autocomplete="off"
+            >
+
+        </div>
+
+
+        <div class="rules-counter">
+
+            <strong id="visibleRules">
+                8
+            </strong>
+
+            regras encontradas
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         REGRAS
+    ====================================================== -->
+
+    <main id="rulesList">
+
+
+        <!-- =================================================
+             COMPORTAMENTO
+        ================================================== -->
+
+        <section
+                class="rules-section"
+                data-category="comportamento"
+        >
+
+
+            <div class="rules-section-header">
+
+                <div class="section-icon">
+
+                    <i class="bx bx-group"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Comportamento
+                    </h2>
+
+                    <p>
+                        Respeito e convivência dentro da comunidade.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- REGRA 01 -->
+
+            <article
+                    class="rule"
+                    data-rule="ofensa jogadores palavrões ameaças ofensa"
+            >
+
+                <div class="rule-number">
+                    01
+                </div>
+
+
+                <div class="rule-content">
+
+                    <div class="rule-title">
+
+                        <h3>
+                            Ofensa aos jogadores
+                        </h3>
+
+                        <span class="rule-tag tag-conduct">
+                            Conduta
+                        </span>
+
+                    </div>
+
+
+                    <p class="rule-description">
+
+                        É proibido ofender jogadores através do
+                        bate-papo, utilizando palavrões, ameaças
+                        ou qualquer outra forma de ofensa.
+
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- REGRA 02 -->
+
+            <article
+                    class="rule"
+                    data-rule="ameaça membros chat mensagens privadas tell"
+            >
+
+                <div class="rule-number">
+                    02
+                </div>
+
+
+                <div class="rule-content">
+
+                    <div class="rule-title">
+
+                        <h3>
+                            Ameaças
+                        </h3>
+
+                        <span class="rule-tag tag-important">
+                            Importante
+                        </span>
+
+                    </div>
+
+
+                    <p class="rule-description">
+
+                        Ameaçar membros através do bate-papo do
+                        servidor ou por mensagens privadas não é
+                        permitido.
+
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- REGRA 03 -->
+
+            <article
+                    class="rule"
+                    data-rule="discriminação raça cor sexo idade religião lugar preconceito"
+            >
+
+                <div class="rule-number">
+                    03
+                </div>
+
+
+                <div class="rule-content">
+
+                    <div class="rule-title">
+
+                        <h3>
+                            Discriminação
+                        </h3>
+
+                        <span class="rule-tag tag-important">
+                            Tolerância zero
+                        </span>
+
+                    </div>
+
+
+                    <p class="rule-description">
+
+                        Atitudes ou discursos preconceituosos
+                        motivados por raça, cor, sexo, idade,
+                        religião ou local de residência são
+                        proibidos dentro da comunidade.
+
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- REGRA 04 -->
+
+            <article
+                    class="rule"
+                    data-rule="flood spam mensagens repetidas chat"
+            >
+
+                <div class="rule-number">
+                    04
+                </div>
+
+
+                <div class="rule-content">
+
+                    <div class="rule-title">
+
+                        <h3>
+                            Flood / Spam
+                        </h3>
+
+                        <span class="rule-tag tag-community">
+                            Chat
+                        </span>
+
+                    </div>
+
+
+                    <p class="rule-description">
+
+                        É proibido enviar mensagens repetidamente
+                        com o objetivo de atrapalhar a conversa
+                        dos jogadores ou prejudicar a experiência
+                        da comunidade.
+
+                    </p>
+
+                </div>
+
+            </article>
+
+
+        </section>
+
+
+        <!-- =================================================
+             SEGURANÇA
+        ================================================== -->
+
+        <section
+                class="rules-section"
+                data-category="seguranca"
+        >
+
+
+            <div class="rules-section-header">
+
+                <div class="section-icon">
+
+                    <i class="bx bx-shield-quarter"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Segurança e integridade
+                    </h2>
+
+                    <p>
+                        Regras para manter o servidor justo.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- REGRA 05 -->
+
+            <article
+                    class="rule"
+                    data-rule="trapaças hack cheat vantagem unfair"
+            >
+
+                <div class="rule-number">
+                    05
+                </div>
+
+
+                <div class="rule-content">
+
+                    <div class="rule-title">
+
+                        <h3>
+                            Uso de trapaças
+                        </h3>
+
+                        <span class="rule-tag tag-security">
+                            Segurança
+                        </span>
+
+                    </div>
+
+
+                    <p class="rule-description">
+
+                        É proibido utilizar qualquer trapaça,
+                        programa ou recurso que forneça vantagem
+                        direta sobre outros jogadores.
+
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- REGRA 06 -->
+
+            <article
+                    class="rule"
+                    data-rule="conta falsa fake conta infração ban"
+            >
+
+                <div class="rule-number">
+                    06
+                </div>
+
+
+                <div class="rule-content">
+
+                    <div class="rule-title">
+
+                        <h3>
+                            Conta falsa
+                        </h3>
+
+                        <span class="rule-tag tag-security">
+                            Segurança
+                        </span>
+
+                    </div>
+
+
+                    <p class="rule-description">
+
+                        Não é permitido criar uma conta única e
+                        exclusivamente para cometer infrações.
+                        A conta principal também poderá sofrer
+                        consequências.
+
+                    </p>
+
+                </div>
+
+            </article>
+
+
+        </section>
+
+
+        <!-- =================================================
+             IDENTIDADE
+        ================================================== -->
+
+        <section
+                class="rules-section"
+                data-category="identidade"
+        >
+
+
+            <div class="rules-section-header">
+
+                <div class="section-icon">
+
+                    <i class="bx bx-user"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Identidade e personalização
+                    </h2>
+
+                    <p>
+                        Regras relacionadas a nomes e skins.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- REGRA 07 -->
+
+            <article
+                    class="rule"
+                    data-rule="apelido nickname nick impróprio palavrão"
+            >
+
+                <div class="rule-number">
+                    07
+                </div>
+
+
+                <div class="rule-content">
+
+                    <div class="rule-title">
+
+                        <h3>
+                            Apelido impróprio
+                        </h3>
+
+                        <span class="rule-tag tag-conduct">
+                            Conduta
+                        </span>
+
+                    </div>
+
+
+                    <p class="rule-description">
+
+                        Não utilize nicknames contendo palavrões
+                        ou referências consideradas inadequadas
+                        para a comunidade.
+
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- REGRA 08 -->
+
+            <article
+                    class="rule"
+                    data-rule="skin skins sexual racista nazista pornográfico homofóbico"
+            >
+
+                <div class="rule-number">
+                    08
+                </div>
+
+
+                <div class="rule-content">
+
+                    <div class="rule-title">
+
+                        <h3>
+                            Skins impróprias
+                        </h3>
+
+                        <span class="rule-tag tag-conduct">
+                            Conduta
+                        </span>
+
+                    </div>
+
+
+                    <p class="rule-description">
+
+                        Não utilize skins com teor sexual ou que
+                        façam referência a conteúdo racista,
+                        nazista, pornográfico, homofóbico ou
+                        qualquer outro conteúdo considerado
+                        impróprio.
+
+                        Tenha bom senso.
+
+                    </p>
+
+                </div>
+
+            </article>
+
+
+        </section>
+
+
+        <!-- RESULTADO VAZIO -->
+
+        <div
+                class="no-results"
+                id="noResults"
+        >
+
+            <i class="bx bx-search-alt"></i>
+
+            <strong>
+                Nenhuma regra encontrada
+            </strong>
+
+            <div>
+                Tente pesquisar por outro termo.
+            </div>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         AVISO FINAL
+    ====================================================== -->
+
+    <section class="rules-footer-card">
+
+        <i class="bx bx-check-shield"></i>
+
+
+        <h3>
+            Jogue com respeito. Divirta-se.
+        </h3>
+
+
+        <p>
+
+            As regras existem para garantir uma experiência
+            justa e agradável para todos. Em caso de dúvida
+            sobre alguma situação, procure nossa equipe através
+            do Discord.
+
+        </p>
+
+
+        <a
+                href="https://discord.gg/7HGa8jJqNe"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="discord-button"
+        >
+
+            <i class="bx bxl-discord-alt"></i>
+
+            Falar com a equipe
+
+        </a>
+
+    </section>
+
+
+</div>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div>
+            © 2026 ExileMC. Todos os direitos reservados.
+        </div>
+
+        <div style="margin-top:6px;">
+            Não somos afiliados à Mojang Studios ou Microsoft.
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     SCRIPTS
+========================================================= -->
+
+<script src="../library/regras/jquery-3.6.0.min.js"></script>
+
+<script src="../library/regras/lib-npm/_popperjs/core_2.9.2/dist/umd/popper.min.js"></script>
+
+<script src="../library/regras/lib-npm/bootstrap_5.0.2/dist/js/bootstrap.min.js"></script>
+
+<script src="../library/regras/lib-core/themes/website/assets/js/javascript.js"></script>
+
+<script src="../library/regras/lib-core/themes/website/assets/js/sweetalert/sweetalert.js"></script>
+
+
+<!-- =========================================================
+     PESQUISA DE REGRAS
+========================================================= -->
+
+<script>
+
+    const searchInput =
+        document.getElementById("ruleSearch");
+
+    const rules =
+        document.querySelectorAll(".rule");
+
+    const sections =
+        document.querySelectorAll(".rules-section");
+
+    const visibleRules =
+        document.getElementById("visibleRules");
+
+    const noResults =
+        document.getElementById("noResults");
+
+
+    searchInput.addEventListener(
+        "input",
+        function () {
+
+            const search =
+                this.value
+                    .toLowerCase()
+                    .normalize("NFD")
+                    .replace(/[\u0300-\u036f]/g, "")
+                    .trim();
+
+
+            let count = 0;
+
+
+            rules.forEach(function (rule) {
+
+                const text =
+                    (
+                        rule.innerText +
+                        " " +
+                        rule.dataset.rule
+                    )
+                        .toLowerCase()
+                        .normalize("NFD")
+                        .replace(/[\u0300-\u036f]/g, "");
+
+
+                const match =
+                    text.includes(search);
+
+
+                if (match) {
+
+                    rule.style.display = "flex";
+
+                    count++;
+
+                } else {
+
+                    rule.style.display = "none";
+
+                }
+
+            });
+
+
+            /* Esconde categorias vazias */
+
+            sections.forEach(function (section) {
+
+                const categoryRules =
+                    section.querySelectorAll(".rule");
+
+                let hasVisibleRule = false;
+
+
+                categoryRules.forEach(function (rule) {
+
+                    if (
+                        rule.style.display !== "none"
+                    ) {
+
+                        hasVisibleRule = true;
+
+                    }
+
+                });
+
+
+                section.style.display =
+                    hasVisibleRule
+                        ? "block"
+                        : "none";
+
+            });
+
+
+            visibleRules.textContent =
+                count;
+
+
+            noResults.style.display =
+                count === 0
+                    ? "block"
+                    : "none";
+
+        }
+
+    );
+
+</script>
+
+
+</body>
+
+</html>

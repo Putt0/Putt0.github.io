@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ExileMC - Loja</title>
+
+    <link rel="icon" type="image/png"
+          href="../library/equipe/lib-core/themes/server/server-icon.png"
+          sizes="64x64">
+
+    <link rel="stylesheet"
+          href="../library/equipe/lib-npm/bootstrap_5.0.2/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet"
+          href="../library/equipe/lib-boxicons_2.0.7/css/boxicons.min.css">
+
+    <link rel="stylesheet"
+          href="../library/equipe/lib-core/themes/website/assets/css/styles.css">
+
+    <style>
+
+        /* ================================
+           LOJA EXILEMC
+        ================================= */
+
+        body {
+            background: #0b0b0f;
+            color: #fff;
+        }
+
+        .shop-header {
+            margin-top: 40px;
+            margin-bottom: 35px;
+            padding: 45px 30px;
+            border-radius: 15px;
+            background:
+                    linear-gradient(135deg, rgba(25, 25, 35, .95), rgba(10, 10, 15, .98));
+            border: 1px solid rgba(255,255,255,.08);
+            box-shadow: 0 10px 40px rgba(0,0,0,.35);
+            text-align: center;
+        }
+
+        .shop-header h1 {
+            font-weight: 800;
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .shop-header h1 span {
+            color: #d97fec;
+        }
+
+        .shop-header p {
+            color: #aaa;
+            margin: 0;
+        }
+
+        .category-menu {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 35px;
+        }
+
+        .category-btn {
+            border: 1px solid rgba(255,255,255,.1);
+            background: #15151d;
+            color: #bbb;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: .2s;
+            cursor: pointer;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: #d97fec;
+            color: #fff;
+            border-color: #d97fec;
+            transform: translateY(-2px);
+        }
+
+        .shop-section-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .shop-section-title h3 {
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .shop-section-title span {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .product-card {
+            height: 100%;
+            background: #14141b;
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 13px;
+            overflow: hidden;
+            transition: .25s;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(217,127,236,.5);
+            box-shadow: 0 15px 35px rgba(0,0,0,.35);
+        }
+
+        .product-image {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background:
+                    radial-gradient(circle at center, rgba(217,127,236,.15), transparent 65%),
+                    #101017;
+        }
+
+        .product-image img {
+            width: 110px;
+            height: 110px;
+            object-fit: contain;
+            image-rendering: pixelated;
+            transition: .25s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.08);
+        }
+
+        .product-icon {
+            font-size: 75px;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,.4));
+        }
+
+        .product-body {
+            padding: 20px;
+        }
+
+        .product-name {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 7px;
+        }
+
+        .product-description {
+            color: #888;
+            font-size: 14px;
+            min-height: 42px;
+            margin-bottom: 18px;
+        }
+
+        .product-price {
+            font-size: 23px;
+            font-weight: 800;
+            color: #d97fec;
+        }
+
+        .product-price small {
+            font-size: 12px;
+            color: #777;
+            font-weight: 400;
+        }
+
+        .buy-button {
+            width: 100%;
+            border: none;
+            background: #d97fec;
+            color: #fff;
+            padding: 11px;
+            border-radius: 7px;
+            font-weight: 700;
+            transition: .2s;
+        }
+
+        .buy-button:hover {
+            background: #c463df;
+            transform: translateY(-1px);
+        }
+
+        .discount {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #ff3d6e;
+            color: white;
+            padding: 5px 9px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .old-price {
+            color: #666;
+            text-decoration: line-through;
+            font-size: 14px;
+            margin-right: 5px;
+        }
+
+        .features {
+            margin-top: 10px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .features li {
+            color: #999;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+
+        .features li i {
+            color: #d97fec;
+            margin-right: 5px;
+        }
+
+        /* CARRINHO */
+
+        .cart-button {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            border: none;
+            background: #d97fec;
+            color: white;
+            font-size: 25px;
+            z-index: 999;
+            box-shadow: 0 8px 30px rgba(217,127,236,.35);
+            transition: .2s;
+        }
+
+        .cart-button:hover {
+            transform: scale(1.08);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: #ff315f;
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .modal-content {
+            background: #15151d;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,.1);
+        }
+
+        .modal-header {
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .modal-footer {
+            border-top: 1px solid rgba(255,255,255,.08);
+        }
+
+        .btn-close {
+            filter: invert(1);
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255,255,255,.07);
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+        }
+
+        .cart-item-price {
+            color: #d97fec;
+            font-weight: bold;
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quantity button {
+            width: 28px;
+            height: 28px;
+            border: none;
+            border-radius: 5px;
+            background: #292933;
+            color: #fff;
+        }
+
+        .quantity button:hover {
+            background: #d97fec;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 40px 10px;
+            color: #777;
+        }
+
+        .empty-cart i {
+            font-size: 55px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .checkout-button {
+            background: #28c76f;
+            border: none;
+            color: #fff;
+            width: 100%;
+            padding: 12px;
+            border-radius: 7px;
+            font-weight: 700;
+        }
+
+        .checkout-button:hover {
+            background: #20aa5d;
+        }
+
+        .info-box {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            padding: 25px;
+            background: #14141b;
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 12px;
+        }
+
+        .info-box h4 {
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            color: #888;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+
+            .shop-header {
+                padding: 30px 20px;
+            }
+
+            .shop-header h1 {
+                font-size: 30px;
+            }
+
+            .product-image {
+                height: 160px;
+            }
+
+            .cart-button {
+                right: 18px;
+                bottom: 18px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- =========================================
+     MENU
+========================================= -->
+
+<nav class="navbar navbar-expand-lg menu">
+
+    <div class="container">
+
+        <a class="navbar-brand" href="../">
+            <img src="../library/equipe/lib-core/themes/server/server-icon.png"
+                 alt="ExileMC">
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Alternar navegação">
+
+            <i class="bx bx-menu"></i>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="navbar-nav m-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../">
+                        🚀 Início
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../regras/">
+                        📖 Regras
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../equipe/">
+                        👮🏼 Equipe
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="../loja/">
+                        🛒 Loja
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================================
+     CONTEÚDO
+========================================= -->
+
+<div class="container">
+
+    <!-- HEADER -->
+
+    <div class="shop-header">
+
+        <h1>
+            🛒 Loja <span>ExileMC</span>
+        </h1>
+
+        <p>
+            Adquira ranks, moedas e itens exclusivos para melhorar sua experiência no servidor.
+        </p>
+
+    </div>
+
+
+    <!-- CATEGORIAS -->
+
+    <div class="category-menu">
+
+        <button class="category-btn active"
+                onclick="filterProducts('all', this)">
+            🛒 Todos
+        </button>
+
+        <button class="category-btn"
+                onclick="filterProducts('ranks', this)">
+            👑 Ranks
+        </button>
+
+        <button class="category-btn"
+                onclick="filterProducts('coins', this)">
+            💰 Coins
+        </button>
+
+        <button class="category-btn"
+                onclick="filterProducts('cosmetics', this)">
+            ✨ Cosméticos
+        </button>
+
+    </div>
+
+
+    <!-- =========================================
+         RANKS
+    ========================================== -->
+
+    <div class="shop-section-title">
+
+        <h3>
+            👑 Ranks
+        </h3>
+
+        <span>
+            Torne-se um jogador especial
+        </span>
+
+    </div>
+
+
+    <div class="row g-4 mb-5">
+
+
+        <!-- RANK VIP -->
+
+        <div class="col-lg-3 col-md-6 product ranks">
+
+            <div class="product-card">
+
+                <div class="product-image">
+
+                    <div class="product-icon">
+                        <img
+                                src="../library/index/lib-core/themes/vips/render_do_taby_5.png"
+                                alt="">
+                    </div>
+
+                </div>
+
+                <div class="product-body">
+
+                    <div class="product-name">
+                        VIP
+                    </div>
+
+                    <div class="product-description">
+                        Comece sua jornada com benefícios exclusivos.
+                    </div>
+
+                    <ul class="features">
+
+                        <li>
+                            <i class="bx bx-check"></i>
+                            Rank VIP
+                        </li>
+
+                        <li>
+                            <i class="bx bx-check"></i>
+                            Kits exclusivos
+                        </li>
+
+                        <li>
+                            <i class="bx bx-check"></i>
+                            Cosméticos exclusivos
+                        </li>
+
+                        <li>
+                            <i class="bx bx-check"></i>
+                            Salas exclusivas no discord
+                        </li>
+
+                        <li>
+                            <i class="bx bx-check"></i>
+                            Vaga garantida no servidor
+                        </li>
+                        <li>
+                            <i class="bx bx-check"></i>
+                            Recompensas multipla 1,2x
+                        </li>
+
+                    </ul>
+
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+
+                        <div class="product-price">
+                            R$ 19,90
+                        </div>
+
+                    </div>
+
+                    <button class="buy-button mt-3"
+                            onclick="addToCart('VIP', 9.90)">
+                        <i class="bx bx-cart-add"></i>
+                        Adicionar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RANK PRO -->
+
+        <div class="col-lg-3 col-md-6 product ranks">
+
+            <div class="product-card">
+
+                <div class="discount">
+                    POPULAR
+                </div>
+
+                <div class="product-image">
+
+                    <div class="product-icon">
+                        <img
+                                src="../library/index/lib-core/themes/vips/render_do_taby_4.png"
+                                alt="">
+                    </div>
+
+                </div>
+
+                <div class="product-body">
+
+                    <div class="product-name">
+                        PRO
+                    </div>
+
+                    <div class="product-description">
+                        Mais vantagens e benefícios para você.
+                    </div>
+
+                    <ul class="features">
+
+                        <li>
+                            <i class="bx bx-check"></i>
+                            Rank PRO
+                        </li>
+
+                        <li>
+                            <i class="bx bx-check"></i>
+                            Kits exclusivos
+                        </li>
+
+                        <li>
+                            <i class="bx bx-check"></i>
+                            Cosméticos exclusivos
+                        </li>
+
+                        <li>
+                            <i class="bx bx-check"></i>
+                            Salas exclusivas no discord
+                        </li>
+
+                        <li>
+                            <i class="bx bx-check"></i>
+                            Vaga garantida no servidor
+                        </li>
+
+                        <li>
+                            <i class="bx bx-check"></i>
+                            Recompensas multipla 1,5x
+                        </li>
+
+                    </ul>
+
+                    <div class="product-price">
+                        R$ 25,90
+                    </div>
+
+                    <button class="buy-button mt-3"
+                            onclick="addToCart('PRO', 19.90)">
+                        <i class="bx bx-cart-add"></i>
+                        Adicionar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RANK ULTIMATE -->
+
+        <div class="col-lg-3 col-md-6 product ranks">
+
+            <div class="product-card">
+
+                <div class="product-image">
+
+                    <div class="product-icon">
+                        <img
+                                src="../library/index/lib-core/themes/vips/render_do_taby_2.png"
+                                alt="">
+                    </div>
+
+                </div>
+
+                <div class="product-body">
+
+                    <div class="product-name">
+                        ULTIMATE
+                    </div>
+
+                    <div class="product-description">
+                        Um dos ranks mais completos do ExileMC.
+                    </div>
+
+                    <ul class="features">
+
+                        <li>
+                            <i class="bx bx-check"></i>
+                            Rank ULTIMATE
+                        </li>
+
+                        <li>
+                            <i class="bx bx-check"></i>
+                            Kits exclusivos
+                        </li>
+
+                        <li>
+                            <i class="bx bx-check"></i>
+                            Cosméticos exclusivos
+                        </li>
+
+                        <li>
+                            <i class="bx bx-check"></i>
+                            Salas exclusivas no discord
+                        </li>
+
+                        <li>
+                            <i class="bx bx-check"></i>
+                            Vaga garantida no servidor
+                        </li>
+
+                        <li>
+                            <i class="bx bx-check"></i>
+                            Recompensas multipla 1,8x
+                        </li>
+
+                    </ul>
+
+                    <div class="product-price">
+                        R$ 35,90
+                    </div>
+
+                    <button class="buy-button mt-3"
+                            onclick="addToCart('ULTIMATE', 29.90)">
+                        <i class="bx bx-cart-add"></i>
+                        Adicionar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RANK BETA -->
+
+        <div class="col-lg-3 col-md-6 product ranks">
+
+            <div class="product-card">
+
+                <div class="discount">
+                    LIMITADO
+                </div>
+
+                <div class="product-image">
+
+                    <div class="product-icon">
+                        <img
+                                src="../library/index/lib-core/themes/vips/render_do_taby_1.png"
+                                alt="">
+                    </div>
+
+                </div>
+
+                <div class="product-body">
+
+                    <div class="product-name">
+                        BETA
+                    </div>
+
+                    <div class="product-description">
+                        O rank definitivo para jogadores do ExileMC.
+                    </div>
+
+                    <ul class="features">
+
+                        <li>
+                            <i class="bx bx-check"></i>
+                            Rank BETA
+                        </li>
+
+                        <li>
+                            <i class="bx bx-check"></i>
+                            Kits exclusivos
+                        </li>
+
+                        <li>
+                            <i class="bx bx-check"></i>
+                            Cosméticos exclusivos
+                        </li>
+
+                        <li>
+                            <i class="bx bx-check"></i>
+                            Salas exclusivas no discord
+                        </li>
+
+                        <li>
+                            <i class="bx bx-check"></i>
+                            Vaga garantida no servidor
+                        </li>
+
+                        <li>
+                            <i class="bx bx-check"></i>
+                            Recompensas multipla 2,3x
+                        </li>
+
+                    </ul>
+
+                    <div class="product-price">
+                        R$ 49,90
+                    </div>
+
+                    <button class="buy-button mt-3"
+                            onclick="addToCart('BETA', 49.90)">
+                        <i class="bx bx-cart-add"></i>
+                        Adicionar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         COINS
+    ========================================== -->
+
+    <div class="shop-section-title">
+
+        <h3>
+            💰 Coins
+        </h3>
+
+        <span>
+            Compre moedas para gastar dentro do servidor
+        </span>
+
+    </div>
+
+
+    <div class="row g-4 mb-5">
+
+
+        <!-- 1.000 COINS -->
+
+        <div class="col-lg-3 col-md-6 product coins">
+
+            <div class="product-card">
+
+                <div class="product-image">
+
+                    <div class="product-icon">
+                        💰
+                    </div>
+
+                </div>
+
+                <div class="product-body">
+
+                    <div class="product-name">
+                        1.000 Coins
+                    </div>
+
+                    <div class="product-description">
+                        Receba 1.000 coins diretamente na sua conta.
+                    </div>
+
+                    <div class="product-price">
+                        R$ 4,90
+                    </div>
+
+                    <button class="buy-button mt-3"
+                            onclick="addToCart('1.000 Coins', 4.90)">
+                        <i class="bx bx-cart-add"></i>
+                        Adicionar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 5.000 COINS -->
+
+        <div class="col-lg-3 col-md-6 product coins">
+
+            <div class="product-card">
+
+                <div class="product-image">
+
+                    <div class="product-icon">
+                        💰
+                    </div>
+
+                </div>
+
+                <div class="product-body">
+
+                    <div class="product-name">
+                        5.000 Coins
+                    </div>
+
+                    <div class="product-description">
+                        Pacote com 5.000 coins.
+                    </div>
+
+                    <div class="product-price">
+                        R$ 19,90
+                    </div>
+
+                    <button class="buy-button mt-3"
+                            onclick="addToCart('5.000 Coins', 19.90)">
+                        <i class="bx bx-cart-add"></i>
+                        Adicionar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 10.000 COINS -->
+
+        <div class="col-lg-3 col-md-6 product coins">
+
+            <div class="product-card">
+
+                <div class="product-image">
+
+                    <div class="product-icon">
+                        💰
+                    </div>
+
+                </div>
+
+                <div class="product-body">
+
+                    <div class="product-name">
+                        10.000 Coins
+                    </div>
+
+                    <div class="product-description">
+                        Pacote especial com 10.000 coins.
+                    </div>
+
+                    <div class="product-price">
+                        R$ 34,90
+                    </div>
+
+                    <button class="buy-button mt-3"
+                            onclick="addToCart('10.000 Coins', 34.90)">
+                        <i class="bx bx-cart-add"></i>
+                        Adicionar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 25.000 COINS -->
+
+        <div class="col-lg-3 col-md-6 product coins">
+
+            <div class="product-card">
+
+                <div class="discount">
+                    MELHOR VALOR
+                </div>
+
+                <div class="product-image">
+
+                    <div class="product-icon">
+                        💎
+                    </div>
+
+                </div>
+
+                <div class="product-body">
+
+                    <div class="product-name">
+                        25.000 Coins
+                    </div>
+
+                    <div class="product-description">
+                        O maior pacote de coins disponível.
+                    </div>
+
+                    <div class="product-price">
+                        R$ 69,90
+                    </div>
+
+                    <button class="buy-button mt-3"
+                            onclick="addToCart('25.000 Coins', 69.90)">
+                        <i class="bx bx-cart-add"></i>
+                        Adicionar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         COSMÉTICOS
+    ========================================== -->
+
+    <div class="shop-section-title">
+
+        <h3>
+            ✨ Cosméticos
+        </h3>
+
+        <span>
+            Personalize sua experiência
+        </span>
+
+    </div>
+
+
+    <div class="row g-4 mb-5">
+
+
+        <!-- TAG -->
+
+        <div class="col-lg-3 col-md-6 product cosmetics">
+
+            <div class="product-card">
+
+                <div class="product-image">
+
+                    <div class="product-icon">
+                        ✨
+                    </div>
+
+                </div>
+
+                <div class="product-body">
+
+                    <div class="product-name">
+                        Tag Exclusiva
+                    </div>
+
+                    <div class="product-description">
+                        Personalize seu nome com uma tag exclusiva.
+                    </div>
+
+                    <div class="product-price">
+                        R$ 7,90
+                    </div>
+
+                    <button class="buy-button mt-3"
+                            onclick="addToCart('Tag Exclusiva', 7.90)">
+                        <i class="bx bx-cart-add"></i>
+                        Adicionar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PET -->
+
+        <div class="col-lg-3 col-md-6 product cosmetics">
+
+            <div class="product-card">
+
+                <div class="product-image">
+
+                    <div class="product-icon">
+                        🐲
+                    </div>
+
+                </div>
+
+                <div class="product-body">
+
+                    <div class="product-name">
+                        Pet Especial
+                    </div>
+
+                    <div class="product-description">
+                        Tenha um companheiro especial dentro do servidor.
+                    </div>
+
+                    <div class="product-price">
+                        R$ 14,90
+                    </div>
+
+                    <button class="buy-button mt-3"
+                            onclick="addToCart('Pet Especial', 14.90)">
+                        <i class="bx bx-cart-add"></i>
+                        Adicionar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- EFEITO -->
+
+        <div class="col-lg-3 col-md-6 product cosmetics">
+
+            <div class="product-card">
+
+                <div class="product-image">
+
+                    <div class="product-icon">
+                        🔥
+                    </div>
+
+                </div>
+
+                <div class="product-body">
+
+                    <div class="product-name">
+                        Efeito Especial
+                    </div>
+
+                    <div class="product-description">
+                        Adicione efeitos exclusivos ao seu personagem.
+                    </div>
+
+                    <div class="product-price">
+                        R$ 12,90
+                    </div>
+
+                    <button class="buy-button mt-3"
+                            onclick="addToCart('Efeito Especial', 12.90)">
+                        <i class="bx bx-cart-add"></i>
+                        Adicionar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- EMOTE -->
+
+        <div class="col-lg-3 col-md-6 product cosmetics">
+
+            <div class="product-card">
+
+                <div class="product-image">
+
+                    <div class="product-icon">
+                        😎
+                    </div>
+
+                </div>
+
+                <div class="product-body">
+
+                    <div class="product-name">
+                        Emotes
+                    </div>
+
+                    <div class="product-description">
+                        Libere emotes exclusivos para utilizar no servidor.
+                    </div>
+
+                    <div class="product-price">
+                        R$ 9,90
+                    </div>
+
+                    <button class="buy-button mt-3"
+                            onclick="addToCart('Emotes', 9.90)">
+                        <i class="bx bx-cart-add"></i>
+                        Adicionar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         INFORMAÇÕES
+    ========================================== -->
+
+    <div class="info-box">
+
+        <h4>
+            <i class="bx bx-info-circle"></i>
+            Como funciona?
+        </h4>
+
+        <p>
+            Escolha os produtos que deseja comprar, adicione ao carrinho
+            e prossiga para o pagamento. Após a confirmação, os produtos
+            poderão ser entregues diretamente no seu nickname dentro do servidor.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     BOTÃO CARRINHO
+========================================= -->
+
+<button class="cart-button"
+        data-bs-toggle="modal"
+        data-bs-target="#cartModal">
+
+    <i class="bx bx-cart"></i>
+
+    <span class="cart-count" id="cartCount">
+        0
+    </span>
+
+</button>
+
+
+<!-- =========================================
+     MODAL CARRINHO
+========================================= -->
+
+<div class="modal fade"
+     id="cartModal"
+     tabindex="-1"
+     aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">
+                    🛒 Seu carrinho
+                </h5>
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <div id="cartItems">
+
+                    <div class="empty-cart">
+
+                        <i class="bx bx-cart"></i>
+
+                        Seu carrinho está vazio.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer d-block">
+
+                <div class="d-flex justify-content-between mb-3">
+
+                    <strong>
+                        Total:
+                    </strong>
+
+                    <strong id="cartTotal"
+                            style="color:#d97fec">
+                        R$ 0,00
+                    </strong>
+
+                </div>
+
+                <button class="checkout-button"
+                        onclick="checkout()">
+
+                    <i class="bx bx-credit-card"></i>
+                    Continuar para pagamento
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     SCRIPTS
+========================================= -->
+
+<script src="../library/equipe/jquery-3.6.0.min.js"></script>
+
+<script src="../library/equipe/lib-npm/_popperjs/core_2.9.2/dist/umd/popper.min.js"></script>
+
+<script src="../library/equipe/lib-npm/bootstrap_5.0.2/dist/js/bootstrap.min.js"></script>
+
+<script src="../library/equipe/lib-core/themes/website/assets/js/javascript.js"></script>
+
+
+<script>
+
+    /* ========================================
+       CARRINHO
+    ======================================== */
+
+    let cart = [];
+
+
+    function addToCart(name, price) {
+
+        const existing = cart.find(item => item.name === name);
+
+        if (existing) {
+
+            existing.quantity++;
+
+        } else {
+
+            cart.push({
+                name: name,
+                price: price,
+                quantity: 1
+            });
+
+        }
+
+        updateCart();
+
+        showNotification(
+            name + " foi adicionado ao carrinho!"
+        );
+    }
+
+
+    function removeFromCart(index) {
+
+        cart.splice(index, 1);
+
+        updateCart();
+    }
+
+
+    function changeQuantity(index, amount) {
+
+        cart[index].quantity += amount;
+
+        if (cart[index].quantity <= 0) {
+
+            cart.splice(index, 1);
+
+        }
+
+        updateCart();
+    }
+
+
+    function updateCart() {
+
+        const cartItems = document.getElementById("cartItems");
+
+        const cartCount = document.getElementById("cartCount");
+
+        const cartTotal = document.getElementById("cartTotal");
+
+
+        let totalItems = 0;
+
+        let totalPrice = 0;
+
+
+        cart.forEach(item => {
+
+            totalItems += item.quantity;
+
+            totalPrice += item.price * item.quantity;
+
+        });
+
+
+        cartCount.innerText = totalItems;
+
+
+        if (cart.length === 0) {
+
+            cartItems.innerHTML = `
+
+                <div class="empty-cart">
+
+                    <i class="bx bx-cart"></i>
+
+                    Seu carrinho está vazio.
+
+                </div>
+
+            `;
+
+        } else {
+
+            cartItems.innerHTML = "";
+
+            cart.forEach((item, index) => {
+
+                const itemElement = document.createElement("div");
+
+                itemElement.className = "cart-item";
+
+                itemElement.innerHTML = `
+
+                    <div>
+
+                        <div class="cart-item-name">
+                            ${item.name}
+                        </div>
+
+                        <div class="cart-item-price">
+                            R$ ${(item.price * item.quantity)
+                    .toFixed(2)
+                    .replace(".", ",")}
+                        </div>
+
+                    </div>
+
+
+                    <div class="quantity">
+
+                        <button onclick="changeQuantity(${index}, -1)">
+                            -
+                        </button>
+
+                        <span>
+                            ${item.quantity}
+                        </span>
+
+                        <button onclick="changeQuantity(${index}, 1)">
+                            +
+                        </button>
+
+                        <button onclick="removeFromCart(${index})"
+                                style="margin-left:5px">
+
+                            <i class="bx bx-trash"></i>
+
+                        </button>
+
+                    </div>
+
+                `;
+
+                cartItems.appendChild(itemElement);
+
+            });
+
+        }
+
+
+        cartTotal.innerText =
+            "R$ " +
+            totalPrice.toFixed(2).replace(".", ",");
+    }
+
+
+    /* ========================================
+       FILTRO
+    ======================================== */
+
+    function filterProducts(category, button) {
+
+        document.querySelectorAll(".category-btn")
+            .forEach(btn => {
+                btn.classList.remove("active");
+            });
+
+        button.classList.add("active");
+
+
+        document.querySelectorAll(".product")
+            .forEach(product => {
+
+                if (category === "all") {
+
+                    product.style.display = "";
+
+                } else if (product.classList.contains(category)) {
+
+                    product.style.display = "";
+
+                } else {
+
+                    product.style.display = "none";
+
+                }
+
+            });
+
+    }
+
+
+    /* ========================================
+       NOTIFICAÇÃO
+    ======================================== */
+
+    function showNotification(message) {
+
+        const notification =
+            document.createElement("div");
+
+        notification.style.position = "fixed";
+        notification.style.bottom = "95px";
+        notification.style.right = "25px";
+        notification.style.background = "#28c76f";
+        notification.style.color = "#fff";
+        notification.style.padding = "12px 18px";
+        notification.style.borderRadius = "7px";
+        notification.style.fontWeight = "600";
+        notification.style.zIndex = "9999";
+        notification.style.boxShadow =
+            "0 8px 25px rgba(0,0,0,.3)";
+
+        notification.innerHTML =
+            '<i class="bx bx-check"></i> ' + message;
+
+        document.body.appendChild(notification);
+
+
+        setTimeout(() => {
+
+            notification.style.opacity = "0";
+            notification.style.transition = ".3s";
+
+            setTimeout(() => {
+                notification.remove();
+            }, 300);
+
+        }, 2000);
+
+    }
+
+
+    /* ========================================
+       CHECKOUT
+    ======================================== */
+
+    function checkout() {
+
+        if (cart.length === 0) {
+
+            showNotification(
+                "Seu carrinho está vazio!"
+            );
+
+            return;
+        }
+
+
+        /*
+         * COLOQUE AQUI A URL DO SEU CHECKOUT.
+         *
+         * Exemplo:
+         *
+         * window.location.href =
+         * "https://seusite.com/checkout";
+         */
+
+
+        alert(
+            "Checkout ainda não configurado. " +
+            "Conecte aqui seu sistema de pagamento."
+        );
+
+    }
+
+
+    updateCart();
+
+</script>
+
+</body>
+</html>
