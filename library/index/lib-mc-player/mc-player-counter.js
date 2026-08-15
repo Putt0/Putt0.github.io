@@ -8,7 +8,7 @@
 class PlayerCounter {
   constructor({ ip, element, format, refreshRate }) {
     format = format || '{online}';
-    refreshRate = refreshRate || 60 * 1000;
+    refreshRate = refreshRate || 10 * 1000;
 
     if (!ip) {
       throw TypeError('ip cannot be null or undefined');
